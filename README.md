@@ -48,11 +48,11 @@ Flags
 Example Usage
 -------------
 
-|For the TTN gene with NO comparison:<br />
-|  *get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI*<br />
+| For the TTN gene with NO comparison:<br />
+|   *get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI*<br />
 
-|For the MYH6-201 transcript comparing cases and controls and generating a plot:<br />
-|  *get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI*
+| For the MYH6-201 transcript comparing cases and controls and generating a plot:<br />
+|   *get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI*
 
 
 Example BAM List
@@ -67,9 +67,9 @@ Example BAM List
 Output
 ------
 
-|  * outname.fa<br />		
-|          a pseudo-genome extending 10kb on either side of the gene of interest<br />
-|    (can be loaded as genome into IGV)<br />
+  * outname.fa<br />		
+    a pseudo-genome extending 10kb on either side of the gene of interest<br />
+    (can be loaded as genome into IGV)<br />
   * outname.gff<br />			
     a GFF file for all exons used<br />
   * outname.gff<br />			
