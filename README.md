@@ -90,8 +90,17 @@ Output
 | case-tot.psi           | a file containing the PSI for all cases along with the average                                                                          |
 | control-tot.psi        | a file containing the PSI for all controls along with the average, requires -c flag                                                     |
 | psi-comparison.txt     | a file comparing cases and controls, requires -c flag<br /> (columns: exon ID, average case PSI, average control PSI, exon, transcript, uncorrected t-test p-value) |
-| *pdf                   | a plot of the PSI, requires -p flag                                                                                                     |
+| *pdf                   | a plot of the PSI, requires -p flag (see below for example)                                                                             |
 | outname-ref_coords.txt | the exon coordinates relative to the reference genome (as opposed to outname.fa)                                                        |
+
+Example case/control plot (TTN-214):
+
+`get-psi-byIndi-github.sh -e T -g TTN-214 -b bamlist.txt -c -o TTN-214-comp_PSI -p
+
+# TTN-214-comp_PSI-out/TTN-214-comp_PSI-plot.pdf`
+
+![](TTN-214-comp_PSI-plot.pdf "A sample PSI-comparison plot")
+
 
 
 
