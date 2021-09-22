@@ -49,10 +49,10 @@ Example Usage
 -------------
 
 For the TTN gene with NO comparison:<br />
-get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI<br />
+  *get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI*<br />
 
 For the MYH6-201 transcript comparing cases and controls and generating a plot:<br />
-get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI
+  *get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI*
 
 
 Example BAM List
@@ -67,38 +67,38 @@ Example BAM List
 Output
 ------
 
-  * outname.fa			
+  * outname.fa<br />		
     a pseudo-genome extending 10kb on either side of the gene of interest<br />
     (can be loaded as genome into IGV)<br />
-  * outname.gff			
+  * outname.gff<br />			
     a GFF file for all exons used<br />
-  * outname.gff			
+  * outname.gff<br />			
     a GTF file for all exons used <br />
     (can be loaded into IGV with the outname.fa genome)<br />
-  * *.bam				
+  * *.bam<br />				
     reads aligned to outname.fa <br />
     (1 BAM/sample; can be loaded into IGV with the outname.fa genome)<br />
-  * *junctions.bed			
+  * *junctions.bed<br />			
     a junctions file for each sample<br />
     (1 BED/sample; can be loaded into IGV with the outname.fa genome)<br />
-  * *-case.psi			
+  * *-case.psi<br />			
     a PSI file for each case sample <br />
     (columns: exon ID, exon length, N included reads, N excluded reads, and PSI)<br /> 
-  * *-control.psi			
+  * *-control.psi<br />			
     a PSI file for each control sample, requires -c flag<br />
     (columns: exon ID, exon length, N included reads, N excluded reads, and PSI)<br /> 
-  * gene.bed			
+  * gene.bed<br />			
     a bed file with the coordinates used to generate outname.fa<br />
-  * case-tot.psi			
+  * case-tot.psi<br />			
     a file containing the PSI for all cases along with the average<br />
-  * control-tot.psi		
+  * control-tot.psi<br />		
     a file containing the PSI for all controls along with the average, requires -c flag<br /> 
-  * psi-comparison.txt		
+  * psi-comparison.txt<br />		
     a file comparing cases and controls, requires -c flag<br />
     (columns: exon ID, average case PSI, average control PSI, exon, transcript, uncorrected t-test p-value)<br />
-  * *pdf				
+  * *pdf<br />				
     a plot of the PSI, requires -p flag<br />
-  * outname-ref_coords.txt 	
+  * outname-ref_coords.txt<br /> 	
     the exon coordinates relative to the reference genome (as opposed to outname.fa)<br />
 
 
