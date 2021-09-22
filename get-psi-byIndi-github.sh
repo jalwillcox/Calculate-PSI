@@ -72,7 +72,11 @@ print_usage() {
  Example Usage
  -------------------
 
- get-psi-byIndi.sh -e G -g TTN -b bamlist.txt -o TTN_PSI
+ For the TTN gene with NO comparison:
+ get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI
+
+ For the MYH6-201 transcript comparing cases and controls and generating a plot:
+ get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI
 
  -------------------
  Example BAM List
