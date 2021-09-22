@@ -26,63 +26,67 @@ The following Rscripts are included with this pipeline:
   * **plot-psi.R** *generates a plot PSI plot for the transcript with the most exons, comparing cases and controls; the R package ggplot2 is required*
   * **plot-psi-noComp.R** *generates a plot for the transcript with the most exons, WITHOUT a comparison; the R package ggplot2 is required*
 
+
 Flags
 _____
 
-> -b (arg, required)     a file with col1=sample_id, col2=bam, and col2=case/control (example BAM list below)
-> -e (arg, required)     G/T - \"G\" to calculate for a gene or \"T\" to calculate for a transcript
-> -g (arg, required)     gene/transcript name
->
-> -c                     compare cases and controls (must be specified in bamlist)
-> -f (arg)               the full path to the GTF file (default: ./hg38.gencode.v27.primary_assembly.annotation.gtf)
-> -m (arg)               a temporary directory to store intermediate files
-> -n (arg)               the full path to the reference genome (default: ./Homo_sapiens_assembly38.fasta)
-> -o (arg)               the basename for the output file (default: GENE_PSI)
-> -p                     generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package)
-> -r (arg)               the length of the read. Use the shortest sample read length, longer reads are trimmed (default: 50)
->
+> -b (arg, required)     a file with col1=sample_id, col2=bam, and col2=case/control (example BAM list below)<br />
+> -e (arg, required)     G/T - \"G\" to calculate for a gene or \"T\" to calculate for a transcript<br />
+> -g (arg, required)     gene/transcript name<br />
+><br />
+> -c                     compare cases and controls (must be specified in bamlist)<br />
+> -f (arg)               the full path to the GTF file (default: ./hg38.gencode.v27.primary_assembly.annotation.gtf)<br />
+> -m (arg)               a temporary directory to store intermediate files<br />
+> -n (arg)               the full path to the reference genome (default: ./Homo_sapiens_assembly38.fasta)<br />
+> -o (arg)               the basename for the output file (default: GENE_PSI)<br />
+> -p                     generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package)<br />
+> -r (arg)               the length of the read. Use the shortest sample read length, longer reads are trimmed (default: 50)<br />
+><br />
 > -h                     print usage
+
 
 Example Usage
 -------------
 
-For the TTN gene with NO comparison:
-get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI
+For the TTN gene with NO comparison:<br />
+get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI<br />
 
-For the MYH6-201 transcript comparing cases and controls and generating a plot:
+For the MYH6-201 transcript comparing cases and controls and generating a plot:<br />
 get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI
+
 
 Example BAM List
 ----------------
 
-> sample1	/path/to/case1/bam/sample1.bam	case
-> sample2	/path/to/case2/bam/sample2.bam	case
-> sample3	/path/to/control1/bam/sample3.bam	control
-> sample4	/path/to/control2/bam/sample4.bam	control
+> sample1	/path/to/case1/bam/sample1.bam	case<br />
+> sample2	/path/to/case2/bam/sample2.bam	case<br />
+> sample3	/path/to/control1/bam/sample3.bam	control<br />
+> sample4	/path/to/control2/bam/sample4.bam	control<br />
+
 
 Output
 ------
 
- outname.fa			a pseudo-genome extending 10kb on either side of the gene of interest
-				 (can be loaded as genome into IGV)
- outname.gff			a GFF file for all exons used
- outname.gff			a GTF file for all exons used 
-				 (can be loaded into IGV with the outname.fa genome)
- *.bam				reads aligned to outname.fa 
-				 (1 BAM/sample; can be loaded into IGV with the outname.fa genome)
- *junctions.bed			a junctions file for each sample
-				 (1 BED/sample; can be loaded into IGV with the outname.fa genome)
- *-case.psi			a PSI file for each case sample 
-				 (columns: exon ID, exon length, N included reads, N excluded reads, and PSI) 
- *-control.psi			a PSI file for each control sample, requires -c flag
-				 (columns: exon ID, exon length, N included reads, N excluded reads, and PSI) 
- gene.bed			a bed file with the coordinates used to generate outname.fa
- case-tot.psi			a file containing the PSI for all cases along with the average
- control-tot.psi		a file containing the PSI for all controls along with the average, requires -c flag 
- psi-comparison.txt		a file comparing cases and controls, requires -c flag
-				 (columns: exon ID, average case PSI, average control PSI, exon, transcript, uncorrected t-test p-value)
- *pdf				a plot of the PSI, requires -p flag
- outname-ref_coords.txt 	the exon coordinates relative to the reference genome (as opposed to outname.fa)
+ outname.fa			a pseudo-genome extending 10kb on either side of the gene of interest<br />
+				 (can be loaded as genome into IGV)<br />
+ outname.gff			a GFF file for all exons used<br />
+ outname.gff			a GTF file for all exons used <br />
+				 (can be loaded into IGV with the outname.fa genome)<br />
+ *.bam				reads aligned to outname.fa <br />
+				 (1 BAM/sample; can be loaded into IGV with the outname.fa genome)<br />
+ *junctions.bed			a junctions file for each sample<br />
+				 (1 BED/sample; can be loaded into IGV with the outname.fa genome)<br />
+ *-case.psi			a PSI file for each case sample <br />
+				 (columns: exon ID, exon length, N included reads, N excluded reads, and PSI)<br /> 
+ *-control.psi			a PSI file for each control sample, requires -c flag<br />
+				 (columns: exon ID, exon length, N included reads, N excluded reads, and PSI)<br /> 
+ gene.bed			a bed file with the coordinates used to generate outname.fa<br />
+ case-tot.psi			a file containing the PSI for all cases along with the average<br />
+ control-tot.psi		a file containing the PSI for all controls along with the average, requires -c flag<br /> 
+ psi-comparison.txt		a file comparing cases and controls, requires -c flag<br />
+				 (columns: exon ID, average case PSI, average control PSI, exon, transcript, uncorrected t-test p-value)<br />
+ *pdf				a plot of the PSI, requires -p flag<br />
+ outname-ref_coords.txt 	the exon coordinates relative to the reference genome (as opposed to outname.fa)<br />
 
 
 
