@@ -7,6 +7,11 @@ PSI is calculated on an individual basis and then averaged, NOT by comparing all
 
 If you just want to calculate PSI (no case/control comparison), label all samples as "case" or exclude the -c flag.
 
+PSI Overview
+------------
+
+![](PSI-graphic.png "A graphic summarizing PSI")
+
 Required Programs
 -----------------
 
