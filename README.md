@@ -88,39 +88,6 @@ Output
 | *pdf                   | a plot of the PSI, requires -p flag                                                                                                     |
 | outname-ref_coords.txt | the exon coordinates relative to the reference genome (as opposed to outname.fa)                                                        |
 
-outname.fa
-: a pseudo-genome extending 10kb on either side of the gene of interest<br />
-(can be loaded as genome into IGV)<br />
-outname.gff
-: a GFF file for all exons used<br />
-outname.gff
-: a GTF file for all exons used <br />
-(can be loaded into IGV with the outname.fa genome)<br />
-*.bam
-: reads aligned to outname.fa <br />
-(1 BAM/sample; can be loaded into IGV with the outname.fa genome)<br />
-*junctions.bed
-: a junctions file for each sample<br />
-(1 BED/sample; can be loaded into IGV with the outname.fa genome)<br />
-*-case.psi
-: a PSI file for each case sample <br />
-(columns: exon ID, exon length, N included reads, N excluded reads, and PSI)<br /> 
-*-control.psi
-: a PSI file for each control sample, requires -c flag<br />
-(columns: exon ID, exon length, N included reads, N excluded reads, and PSI)<br /> 
-gene.bed
-: a bed file with the coordinates used to generate outname.fa<br />
-case-tot.psi
-: a file containing the PSI for all cases along with the average<br />
-control-tot.psi		
-: a file containing the PSI for all controls along with the average, requires -c flag<br /> 
-psi-comparison.txt
-: a file comparing cases and controls, requires -c flag<br />
-(columns: exon ID, average case PSI, average control PSI, exon, transcript, uncorrected t-test p-value)<br />
-*pdf<br />				
-: a plot of the PSI, requires -p flag<br />
-outname-ref_coords.txt<br /> 	
-: the exon coordinates relative to the reference genome (as opposed to outname.fa)
 
 
 
