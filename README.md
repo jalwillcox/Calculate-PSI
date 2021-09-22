@@ -97,9 +97,8 @@ Example case/control plot (TTN-214):
 
 `get-psi-byIndi-github.sh -e T -g TTN-214 -b bamlist.txt -c -o TTN-214-comp_PSI -p`
 
-TTN-214-comp_PSI-out/TTN-214-comp_PSI-plot.pdf:
 
-![](TTN-214-comp_PSI-plot.pdf "A sample PSI-comparison plot")
+![TTN-214-comp_PSI-out/TTN-214-comp_PSI-plot.pdf](TTN-214-comp_PSI-plot.png "A sample PSI-comparison plot")
 
 
 
