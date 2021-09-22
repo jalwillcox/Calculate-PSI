@@ -72,7 +72,10 @@ Example BAM List
 Output
 ------
 
-outname.fa		
+| File     | Description                                                      |
+|----------|------------------------------------------------------------------|
+|outname.fa| a pseudo-genome extending 10kb on either side of the gene of interest<br /> (can be loaded as genome into IGV)|
+outname.fa
 : a pseudo-genome extending 10kb on either side of the gene of interest<br />
 (can be loaded as genome into IGV)<br />
 outname.gff
