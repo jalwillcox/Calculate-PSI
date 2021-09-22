@@ -19,6 +19,11 @@ This script uses the following programs; alternate versions may also work:
   * [R/3.6.1](https://www.r-project.org/)
   * [samtools/1.3.1](http://www.htslib.org/doc/1.3.1/samtools.html)
 
+This program also uses some form of the following files:
+
+  * The relevant genome file, e.g. [hg38](https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0/)
+  * A [GTF file](https://www.gencodegenes.org/human/release_27.html) associated with the relevant genome
+
 The following Rscripts are included with this pipeline:
 
   * **configure-psi-byIndiv.R** *combine individual PSI output and calculate average PSI across samples* 
@@ -48,10 +53,10 @@ Flags
 Example Usage
 -------------
 
-For the TTN gene with NO comparison:<br />
+For the TTN gene with NO comparison:<br /><br />
     `get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI`
 
-For the MYH6-201 transcript comparing cases and controls and generating a plot:<br />
+For the MYH6-201 transcript comparing cases and controls and generating a plot:<br /><br />
     `get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI`
 
 
