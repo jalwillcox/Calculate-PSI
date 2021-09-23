@@ -72,11 +72,7 @@ print_usage() {
  Example Usage
  -------------------
 
- For the TTN gene with NO comparison:
- get-psi-byIndi-github.sh -e G -g TTN -b bamlist.txt -o TTN_PSI
-
- For the MYH6-201 transcript comparing cases and controls and generating a plot:
- get-psi-byIndi-github.sh -e T -g MYH6-201 -b bamlist.txt -cp -o MYH6-201_PSI
+ get-psi-byIndi.sh -e G -g TTN -b bamlist.txt -o TTN_PSI
 
  -------------------
  Example BAM List
@@ -174,15 +170,6 @@ elif [ -z $outname ]; then
   outname=${gene}_PSI
 fi 
 
-
-### Loading Modules
-
-module load bedtools/2.27.1
-module load gcc/6.2.0
-module load bowtie2/2.2.9
-module load tophat/2.1.1
-module load R/3.6.1
-source /n/data1/hms/genetics/seidman/solexa/srd4/bin/spl-globals.sh
 
 ### Determine the comp variable
 
