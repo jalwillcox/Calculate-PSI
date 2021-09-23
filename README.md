@@ -40,6 +40,22 @@ The following Rscripts are included with this pipeline:
 Flags
 -----
 
+| Flag | Argument                          | Default                                            | Description |
+|------|-----------------------------------|----------------------------------------------------|-------------|
+| -b   | filename (required)               | -                                                  | a file with col1=sample_id, col2=bam, and col2=case/control (example BAM list below) |
+| -e   | \"G\"/\"T\" (required)            | -                                                  | \"G\" to calculate for a gene or \"T\" to calculate for a transcript
+| -g   | gene/transcript ID (required)     | -                                                  | gene/transcript of interest |
+| -c   | no argument  (optional)           | -                                                  | compare cases and controls (must be specified in bamlist) |
+| -f   | GTF file (optional)               | ./hg38.gencode.v27.primary_assembly.annotation.gtf | the full path to the reference GTF file |
+| -m   | temp directory (optional)         | ./                                                 | a temporary directory to store intermediate files |
+| -n   | reference genome (optional)       | ./Homo_sapiens_assembly38.fasta                    | the full path to the reference genome |
+| -o   | string (optional)                 | \<GENE\>_PSI                                       | the basename for output files |
+| -p   | no argument (optional)            | -                                                  | generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package) |
+| -r   | integer (optional)                | 50                                                 | the length of the read. Use the shortest sample read length, longer reads are trimmed |
+| -h   | no argument (optional)            | -                                                  | print usage |
+
+
+
 > -b (arg, required)     a file with col1=sample_id, col2=bam, and col2=case/control (example BAM list below)<br />
 > -e (arg, required)     G/T - \"G\" to calculate for a gene or \"T\" to calculate for a transcript<br />
 > -g (arg, required)     gene/transcript name<br />
