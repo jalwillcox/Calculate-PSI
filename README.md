@@ -55,22 +55,6 @@ Flags
 | -h   | no argument (optional)            | -                                                  | print usage |
 
 
-
-> -b (arg, required)     a file with col1=sample_id, col2=bam, and col2=case/control (example BAM list below)<br />
-> -e (arg, required)     G/T - \"G\" to calculate for a gene or \"T\" to calculate for a transcript<br />
-> -g (arg, required)     gene/transcript name<br />
-><br />
-> -c                     compare cases and controls (must be specified in bamlist)<br />
-> -f (arg)               the full path to the GTF file (default: ./hg38.gencode.v27.primary_assembly.annotation.gtf)<br />
-> -m (arg)               a temporary directory to store intermediate files<br />
-> -n (arg)               the full path to the reference genome (default: ./Homo_sapiens_assembly38.fasta)<br />
-> -o (arg)               the basename for the output file (default: GENE_PSI)<br />
-> -p                     generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package)<br />
-> -r (arg)               the length of the read. Use the shortest sample read length, longer reads are trimmed (default: 50)<br />
-><br />
-> -h                     print usage
-
-
 Example Usage
 -------------
 
