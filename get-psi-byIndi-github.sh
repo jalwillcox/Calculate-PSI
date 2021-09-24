@@ -155,6 +155,14 @@ elif [ ! -s $bamlist ]; then
   print_usage
   echo "ERROR: list of bam files not found"
   exit 1
+elif ! [ -s $genome ]; then
+  print_usage
+  echo "ERROR: Can't find genome. Please specify the full path to the genome with the -n flag"
+  exit 1
+elif ! [ -s $gtf ]; then
+  print_usage
+  echo "ERROR: Can't find GTF file. Please specify the full path to the GTF file with the -f flag"
+  exit 1
 elif [ -z $outname ]; then
   echo "output can be found in ${gene}_PSI-out"
   outname=${gene}_PSI
