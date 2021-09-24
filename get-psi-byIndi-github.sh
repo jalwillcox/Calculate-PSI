@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#SBATCH -J get-psi
-#SBATCH -o %x.%j.log
-#SBATCH -e %x.%j.err
-#SBATCH -p medium
-#SBATCH -t 2-00:00:00
-#SBATCH -n 1
-#SBATCH -c 1
-#SBATCH --mem=8G
-##SBATCH --dependency=singleton
-
 echo $0 $@
 
 ### USAGE
