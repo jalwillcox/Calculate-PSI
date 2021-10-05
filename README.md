@@ -26,8 +26,8 @@ This script uses the following programs; alternate versions may also work:
 
 This program also uses some form of the following files:
 
-  * The relevant genome file, e.g. [hg38](https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0/)
-  * A [GTF file](https://www.gencodegenes.org/human/release_27.html) associated with the relevant genome
+  * The relevant genome file, e.g. [Homo_sapiens_assembly38.fasta](https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0/)
+  * A GTF file associated with the relevant genome, e.g. [the comprehensive gene annotation (PRI): gencode.v27.primary_assembly.annotation.gtf](https://www.gencodegenes.org/human/release_27.html)
 
 The following Rscripts are included with this pipeline:
 

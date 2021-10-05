@@ -114,7 +114,7 @@ gene=''
 
 comp=''
 plot=''
-gtf="./hg38.gencode.v27.primary_assembly.annotation.gtf"
+gtf="./gencode.v27.primary_assembly.annotation.gtf"
 tmp="./"
 genome=./Homo_sapiens_assembly38.fasta
 outname=''
