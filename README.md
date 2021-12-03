@@ -17,12 +17,14 @@ Required Programs
 
 This script uses the following programs; alternate versions may also work:
 
-  * [bedtools/2.27.1](https://github.com/arq5x/bedtools2)
+  * [bedtools/2.23.0](https://github.com/arq5x/bedtools2)
   * [gcc/6.2.0](https://linuxfromscratch.org/blfs/view/7.10/general/gcc.html)
   * [bowtie2/2.2.9](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
   * [tophat/2.1.1](https://ccb.jhu.edu/software/tophat/index.shtml)
   * [R/3.6.1](https://www.r-project.org/)
   * [samtools/1.3.1](http://www.htslib.org/doc/1.3.1/samtools.html)
+
+*NOTE* An old version of bedtools (v2.23.0) is necessary to produce the appropriately formatted output with coverageBed.
 
 This program also uses some form of the following files:
 
@@ -33,7 +35,7 @@ This program also uses some form of the following files:
 
 The following Rscripts are included with this pipeline:
 
-  * **configure-psi-byIndiv.R** *combine individual PSI output and calculate average PSI across samples* 
+  * **configure-psi-byIndiv.R** *combine individual PSI output and calculate average PSI across samples*
   * **comp-PSI.R** *compare cases to control (includes uncorrected p-values)*
   * **plot-psi.R** *generates a plot PSI plot for the transcript with the most exons, comparing cases and controls; the R package ggplot2 is required*
   * **plot-psi-noComp.R** *generates a plot for the transcript with the most exons, WITHOUT a comparison; the R package ggplot2 is required*
@@ -54,6 +56,7 @@ Flags
 | -o   | string (optional)                 | *\<GENE/TRANSCRIPT\>*_PSI                                       | the basename for output files |
 | -p   | no argument (optional)            | -                                                  | generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package) |
 | -r   | integer (optional)                | 50                                                 | the length of the read. Use the shortest sample read length, longer reads are trimmed |
+| -u   | no argument (optional)            | -                                                  | Use unpaired reads |
 | -h   | no argument (optional)            | -                                                  | print usage |
 
 
@@ -101,8 +104,3 @@ Example case/control plot (TTN-214):
 
 
 ![TTN-214-comp_PSI-out/TTN-214-comp_PSI-plot.pdf](TTN-214-comp_PSI-plot.png "A sample PSI-comparison plot")
-
-
-
-
-
