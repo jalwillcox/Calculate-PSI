@@ -17,14 +17,16 @@ Required Programs
 
 This script uses the following programs; alternate versions may also work:
 
-  * [bedtools/2.23.0](https://github.com/arq5x/bedtools2)
+  * [bedtools/2.23.0](https://github.com/arq5x/bedtools2/releases/tag/v2.23.0)
   * [gcc/6.2.0](https://linuxfromscratch.org/blfs/view/7.10/general/gcc.html)
   * [bowtie2/2.2.9](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
   * [tophat/2.1.1](https://ccb.jhu.edu/software/tophat/index.shtml)
   * [R/3.6.1](https://www.r-project.org/)
   * [samtools/1.3.1](http://www.htslib.org/doc/1.3.1/samtools.html)
 
-*NOTE* An old version of bedtools (v2.23.0) is necessary to produce the appropriately formatted output with coverageBed.
+**NOTE** An old version of bedtools (v2.23.0) is necessary to produce the appropriately formatted output with coverageBed.
+
+
 
 This program also uses some form of the following files:
 
