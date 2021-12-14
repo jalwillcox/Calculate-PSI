@@ -59,6 +59,7 @@ Flags
 | -p   | no argument (optional)            | -                                                  | generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package) |
 | -r   | integer (optional)                | 50                                                 | the length of the read. Use the shortest sample read length, longer reads are trimmed |
 | -u   | no argument (optional)            | -                                                  | Use unpaired reads |
+| -x   | no argument (optional)            | -                                                  | Remove output bam files after run (helpful if space is an issue) |
 | -h   | no argument (optional)            | -                                                  | print usage |
 
 

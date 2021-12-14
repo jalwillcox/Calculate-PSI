@@ -58,6 +58,7 @@ print_usage() {
  -p 			generate a plot of the PSI for the transcript with the highest exon count (requires ggplot2 R package)
  -r (arg)		the length of the read. Use the shortest sample read length, longer reads are trimmed (default: 50)
  -u			unpaired reads
+ -x			remove bam files
 
  -h			print usage
 
@@ -123,9 +124,9 @@ genome=./Homo_sapiens_assembly38.fasta
 outname=''
 rl=50
 unp=''
+rm_bam=''
 
-
-while getopts 'b:e:g:cf:m:n:o:pr:uh' flag; do
+while getopts 'b:e:g:cf:m:n:o:pr:uxh' flag; do
   case "${flag}" in
     b) bamlist="${OPTARG}" ;;
     e) got="${OPTARG}" ;;
@@ -138,6 +139,7 @@ while getopts 'b:e:g:cf:m:n:o:pr:uh' flag; do
     p) plot=true ;;
     r) rl="${OPTARG}" ;;
     u) unp=true ;;
+    x) rm_bam=true ;;
     h) print_usage ; exit ;;
     *) print_usage
        exit 1 ;;
@@ -405,7 +407,11 @@ for i in ${dirout}/*-case.bam; do
   header="1iexon_ID\tlength\tinclusion\texclusion\t$(basename $i .bam)-psi"
   sed -i $header ${dirout}/$(basename $i .bam).psi
 
-  #rm ${dirout}/*exclusion ${dirout}/*inclusion ${dirout}/*exonic_parts.psi ${dirout}/*_filtered_junctions.txt ${dirout}/left* ${dirout}/right* ${dirout}/filtered_junctions.bed ${dirout}/intron.bed
+  rm ${dirout}/*exclusion ${dirout}/*inclusion ${dirout}/*exonic_parts.psi ${dirout}/*_filtered_junctions.txt ${dirout}/left* ${dirout}/right* ${dirout}/filtered_junctions.bed ${dirout}/intron.bed
+
+  if [ -n "$rm_bam" ] ; then
+    rm $casebam*
+  fi
 
 done
 
@@ -451,7 +457,11 @@ if [ -n "$comp" ] ; then
     header="1iexon_ID\tlength\tinclusion\texclusion\t$(basename $i .bam)-psi"
     sed -i $header ${dirout}/$(basename $i .bam).psi
 
-    #rm ${dirout}/*exclusion ${dirout}/*inclusion ${dirout}/*exonic_parts.psi ${dirout}/*_filtered_junctions.txt ${dirout}/left* ${dirout}/right* ${dirout}/filtered_junctions.bed ${dirout}/intron.bed
+    rm ${dirout}/*exclusion ${dirout}/*inclusion ${dirout}/*exonic_parts.psi ${dirout}/*_filtered_junctions.txt ${dirout}/left* ${dirout}/right* ${dirout}/filtered_junctions.bed ${dirout}/intron.bed
+
+    if [ -n "$rm_bam" ] ; then
+      rm $conbam*
+    fi
 
   done
 
