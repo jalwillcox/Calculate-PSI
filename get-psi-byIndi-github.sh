@@ -245,7 +245,7 @@ gff="${dirout}/${outname}.gff"
 
 #grep -v ^"#" $ogtf | cut -f 1-7 -d ";" | cut -f 3-9 | grep ^"exon" | sed 's/ /\t/g' | sed 's/[";]//g' | awk -v gene=$gene 'BEGIN{OFS="\t"}{print gene,".","exon_part",$2,$3,".",".",".",$20";"$18}' > $gff
 
-grep -v ^"#" $ogtf | cut -f 1-7 -d ";" | cut -f 3-9 | grep ^"exon" | sed 's/ /\t/g' | sed 's/[";]//g' | awk -v gene=$gene 'BEGIN{OFS="\t"}{print gene,".","exon_part",$2,$3,".",".","."}' | paste - <(cut -f 3- $ogtf | grep ^"exon" | grep -o "exon_number .*" | cut -f1 -d\; | grep -o [1234567890]* | paste -d\; - <(cut -f 3- $ogtf | grep ^"exon" | grep -o "transcript_id.*" | cut -f1 -d\; | awk '{print $2}' | sed 's/"//g')) > $gff
+grep -v ^"#" $ogtf | cut -f 1-7 -d ";" | cut -f 3-9 | grep ^"exon" | sed 's/ /\t/g' | sed 's/[";]//g' | awk -v gene=$gene 'BEGIN{OFS="\t"}{print gene,".","exon_part",$2,$3,".",".","."}' | paste - <(cut -f 3- $ogtf | grep ^"exon" | grep -o "exon_number .*" | cut -f1 -d\; | grep -o [1234567890]\* | paste -d\; - <(cut -f 3- $ogtf | grep ^"exon" | grep -o "transcript_id.*" | cut -f1 -d\; | awk '{print $2}' | sed 's/"//g')) > $gff
 
 ## Make translation file for reference genome
 
