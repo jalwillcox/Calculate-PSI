@@ -245,7 +245,14 @@ gff="${dirout}/${outname}.gff"
 
 #grep -v ^"#" $ogtf | cut -f 1-7 -d ";" | cut -f 3-9 | grep ^"exon" | sed 's/ /\t/g' | sed 's/[";]//g' | awk -v gene=$gene 'BEGIN{OFS="\t"}{print gene,".","exon_part",$2,$3,".",".",".",$20";"$18}' > $gff
 
+# Exons
+
 grep -v ^"#" $ogtf | cut -f 1-7 -d ";" | cut -f 3-9 | grep ^"exon" | sed 's/ /\t/g' | sed 's/[";]//g' | awk -v gene=$gene 'BEGIN{OFS="\t"}{print gene,".","exon_part",$2,$3,".",".","."}' | paste - <(cut -f 3- $ogtf | grep ^"exon" | grep -o "exon_number .*" | cut -f1 -d\; | grep -o [1234567890]\* | paste -d\; - <(cut -f 3- $ogtf | grep ^"exon" | grep -o "transcript_id.*" | cut -f1 -d\; | awk '{print $2}' | sed 's/"//g')) > $gff
+
+# Introns
+
+grep -v ^"#" $ogtf | cut -f 1-7 -d ";" | cut -f 3-9 | grep ^"intron" | sed 's/ /\t/g' | sed 's/[";]//g' | awk -v gene=$gene 'BEGIN{OFS="\t"}{print gene,".","intron_part",$2,$3,".",".","."}' | paste - <(cut -f 3- $ogtf | grep ^"intron" | grep -o "intron_number .*" | cut -f1 -d\; | grep -o [1234567890]\* | sed "s/$/;intron/g" | paste -d\; - <(cut -f 3- $ogtf | grep ^"intron" | grep -o "transcript_id.*" | cut -f1 -d\; | awk '{print $2}' | sed 's/"//g')) >> $gff
+
 
 ## Make translation file for reference genome
 
@@ -402,7 +409,8 @@ for i in ${dirout}/*-case.bam; do
 
   awk 'BEGIN{OFS="\t"}{print $5,$0}' ${dirout}/case_exonic_parts.inclusion | sort -g | cut -f 2- | paste - ${dirout}/case_exonic_parts.exclusion | awk -v "len=$rl" 'BEGIN{OFS="\t"; print "exon_ID" , "length" , "inclusion" , "exclusion" , "PSI"}{NIR=$6/($4+len-1) ; NER=$8/(len-1)}{print $5,$4,$6,$8,(NIR+NER<=0)? "NA":NIR / (NIR + NER)}' > ${dirout}/case_exonic_parts.psi
 
-  sed 1d ${dirout}/case_exonic_parts.psi | sed 's/^e//g' | sort -g | awk '{print "e"$0}' > ${dirout}/$(basename $i .bam).psi
+  sed 1d ${dirout}/case_exonic_parts.psi | sed 's/^e//g' | sort -g | grep -v intron| awk '{print "e"$0}' > ${dirout}/$(basename $i .bam).psi
+  sed 1d ${dirout}/case_exonic_parts.psi | sed 's/^e//g' | sort -g | grep intron | awk '{print "i"$0}' | sed "s/;intron//g" >> ${dirout}/$(basename $i .bam).psi
 
   header="1iexon_ID\tlength\tinclusion\texclusion\t$(basename $i .bam)-psi"
   sed -i $header ${dirout}/$(basename $i .bam).psi
@@ -452,7 +460,8 @@ if [ -n "$comp" ] ; then
 
     awk 'BEGIN{OFS="\t"}{print $5,$0}' ${dirout}/control_exonic_parts.inclusion | sort -g | cut -f 2- | paste - ${dirout}/control_exonic_parts.exclusion | awk -v "len=$rl" 'BEGIN{OFS="\t"; print "exon_ID" , "length" , "inclusion" , "exclusion" , "PSI"}{NIR=$6/($4+len-1) ; NER=$8/(len-1)}{print $5,$4,$6,$8,(NIR+NER<=0)? "NA":NIR / (NIR + NER)}' > ${dirout}/control_exonic_parts.psi
 
-    sed 1d ${dirout}/control_exonic_parts.psi | sed 's/^e//g' | sort -g | awk '{print "e"$0}' > ${dirout}/$(basename $i .bam).psi
+    sed 1d ${dirout}/control_exonic_parts.psi | sed 's/^e//g' | sort -g | grep -v intron | awk '{print "e"$0}' > ${dirout}/$(basename $i .bam).psi
+    sed 1d ${dirout}/control_exonic_parts.psi | sed 's/^e//g' | sort -g | grep intron | awk '{print "i"$0}' | sed "s/;intron//g" >> ${dirout}/$(basename $i .bam).psi
 
     header="1iexon_ID\tlength\tinclusion\texclusion\t$(basename $i .bam)-psi"
     sed -i $header ${dirout}/$(basename $i .bam).psi
